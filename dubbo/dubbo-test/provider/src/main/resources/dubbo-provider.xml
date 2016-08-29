@@ -9,6 +9,8 @@
 	
 	<bean id="testService" class="com.facingsea.dubbo.provider.service.impl.TestServiceImpl"></bean>
 	
+	<bean id="userService" class="com.facingsea.dubbo.provider.service.impl.UserServiceImpl"></bean>
+	
 	<!-- 提供方应用信息，用于计算依赖关系 -->
 	<dubbo:application name="provider"/>
 	
@@ -20,5 +22,15 @@
 	
 	<!-- 声明需要暴露的服务接口 -->
 	<dubbo:service interface="com.facingsea.dubbo.api.service.TestService" ref="testService"></dubbo:service>
+	
+	<dubbo:service interface="com.facingsea.dubbo.api.service.UserService" ref="userService">
+		<!-- 方法配置，用于ServiceConfig和ReferenceConfig指定方法级的配置信息 -->
+		<dubbo:method name="findById" timeout="1000" onreturn="notify.after" ></dubbo:method>
+		
+		<!-- onreturn not work -->
+		<dubbo:method name="delete" onreturn="notify.after"></dubbo:method>
+	</dubbo:service>
+	
+	<bean id="notify" class="com.facingsea.dubbo.provider.advisor.NotifyImpl"></bean>
 	  
 </beans>        

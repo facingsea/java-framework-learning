@@ -17,4 +17,7 @@
 	<dubbo:reference id="testService" 
 				interface="com.facingsea.dubbo.api.service.TestService"></dubbo:reference>
         
-</beans>        
+    <dubbo:reference interface="com.facingsea.dubbo.api.service.UserService"
+    			id="userService" ></dubbo:reference>
+    			
+</beans>         

@@ -12,7 +12,7 @@ public class ConsumerServiceTest {
 	public static void main(String[] args) {
 
 		ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext(
-				"classpath:beans.xml");
+				"classpath:dubbo-consumer.xml");
 
 		ac.start();
 
